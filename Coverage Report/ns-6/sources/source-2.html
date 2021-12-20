@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CountryLoader</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.jumia.demo.infrastructure</a>
+</div>
+
+<h1>Coverage Summary for Class: CountryLoader (com.jumia.demo.infrastructure)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CountryLoader</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (25/25)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CountryLoader$$EnhancerBySpringCGLIB$$a11be93d</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$$EnhancerBySpringCGLIB$$a11be93d$$FastClassBySpringCGLIB$$4abe05f7</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$$FastClassBySpringCGLIB$$907b1f08</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$d4UYzv21</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$FPz3QTAK</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$fZUW7udt</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$h55TMGmb</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$MLRb2sUH</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$P7nyLkuV</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$TFVud8Wh</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$TPVMfXbk</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$TSbf6Dq1</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$UmpojzV3</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$WLo1TuZN</td>
+  </tr>
+  <tr>
+    <td class="name">CountryLoader$MockitoMock$309833116$auxiliary$wYSYuFNt</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (25/25)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.jumia.demo.infrastructure;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.jumia.demo.entities.Country;
+<i class="no-highlight">4</i>&nbsp;import com.jumia.demo.factories.CountryFactory;
+<i class="no-highlight">5</i>&nbsp;import com.jumia.demo.interfaces.ICountry;
+<i class="no-highlight">6</i>&nbsp;import lombok.Data;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.context.annotation.Bean;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.context.annotation.Configuration;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.*;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;@Configuration
+<b class="fc"><i class="no-highlight">15</i>&nbsp;@Data</b>
+<i class="no-highlight">16</i>&nbsp;public class CountryLoader {
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">19</i>&nbsp;    CountryDB countryDB;</b>
+<i class="no-highlight">20</i>&nbsp;
+<b class="fc"><i class="no-highlight">21</i>&nbsp;    private Map&lt;String,List&lt;ICountry&gt;&gt; countriesCache = new LinkedHashMap&lt;&gt;(); // country code as key</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    private Map&lt;String,List&lt;ICountry&gt;&gt; countriesStatesCache = new LinkedHashMap&lt;&gt;(); // country state as key</b>
+<i class="no-highlight">23</i>&nbsp;
+<b class="fc"><i class="no-highlight">24</i>&nbsp;    Integer pageSize = 5;</b>
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Bean
+<i class="no-highlight">27</i>&nbsp;    public void loadCountries(){
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        List&lt;Country&gt; countries = countryDB.getAllCountries();</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        for(Country country : countries){</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;            ICountry iCountry = CountryFactory.createCountry(country);</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;            iCountry.setCountryCode(country.getPhone());</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;            iCountry.setPhone(country.getPhone());</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;            iCountry.setState();</b>
+<i class="no-highlight">34</i>&nbsp;
+<b class="fc"><i class="no-highlight">35</i>&nbsp;            if(countriesCache.get(iCountry.getCountryCode()) == null){</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;                List&lt;ICountry&gt; iCountries = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;                iCountries.add(iCountry);</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;                countriesCache.put(iCountry.getCountryCode(), iCountries);</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;            }</b>
+<i class="no-highlight">40</i>&nbsp;            else{
+<b class="fc"><i class="no-highlight">41</i>&nbsp;                countriesCache.get(iCountry.getCountryCode()).add(iCountry);</b>
+<i class="no-highlight">42</i>&nbsp;            }
+<i class="no-highlight">43</i>&nbsp;
+<b class="fc"><i class="no-highlight">44</i>&nbsp;            if(countriesStatesCache.get(iCountry.getState()) == null){</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;                List&lt;ICountry&gt; iCountries = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;                iCountries.add(iCountry);</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;                countriesStatesCache.put(iCountry.getState(), iCountries);</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;            }</b>
+<i class="no-highlight">49</i>&nbsp;            else{
+<b class="fc"><i class="no-highlight">50</i>&nbsp;                countriesStatesCache.get(iCountry.getState()).add(iCountry);</b>
+<i class="no-highlight">51</i>&nbsp;            }
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        System.out.println(&quot;Loaded!&quot;);</b>
+<i class="no-highlight">54</i>&nbsp;    }
+<i class="no-highlight">55</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-20 16:39</div>
+</div>
+</body>
+</html>

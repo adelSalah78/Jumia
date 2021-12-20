@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Morocco</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.jumia.demo.models.countries</a>
+</div>
+
+<h1>Coverage Summary for Class: Morocco (com.jumia.demo.models.countries)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Morocco</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (10/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.jumia.demo.models.countries;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.jumia.demo.interfaces.ICountry;
+<i class="no-highlight">4</i>&nbsp;import lombok.Data;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;import java.util.regex.Pattern;
+<i class="no-highlight">7</i>&nbsp;
+<b class="nc"><i class="no-highlight">8</i>&nbsp;@Data</b>
+<i class="no-highlight">9</i>&nbsp;public class Morocco implements ICountry {
+<b class="nc"><i class="no-highlight">10</i>&nbsp;    Integer id;</b>
+<b class="fc"><i class="no-highlight">11</i>&nbsp;    String phone;</b>
+<b class="nc"><i class="no-highlight">12</i>&nbsp;    String name;</b>
+<b class="fc"><i class="no-highlight">13</i>&nbsp;    String state;</b>
+<b class="fc"><i class="no-highlight">14</i>&nbsp;    String countryCode;</b>
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    static final String regex = &quot;.[5-9]\\d{8}$ &quot;;
+<i class="no-highlight">17</i>&nbsp;
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    public Morocco(Integer id, String name) {</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        this.name = name;</b>
+<i class="no-highlight">21</i>&nbsp;    }
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    public void setPhone(String wholePhone) {
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        this.phone = wholePhone.split(&quot; &quot;)[1];</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    public void setState() {
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        this.state =</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;                Pattern.matches(Morocco.regex,this.getPhone()) == true ? &quot;Valid&quot; : &quot;InValid&quot;;</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    public void setCountryCode(String wholePhone) {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        this.countryCode = &quot;+&quot;+wholePhone.substring(1,4);</b>
+<i class="no-highlight">34</i>&nbsp;    }
+<i class="no-highlight">35</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-20 16:39</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="login-box">
+    <form>
+        <div class="user-box">
+            <input [(ngModel)]="code" [ngModelOptions]="{standalone: true}"/>
+            <label>Enter code:</label>
+        </div>
+        <div class="user-box">
+            <select [(ngModel)]="state" [ngModelOptions]="{standalone: true}">
+                <option style="background-color: grey;" value="">Empty</option>
+                <option style="background-color: grey;" value="InValid">InValid</option>
+                <option style="background-color: grey;" value="Valid">Valid</option>
+            </select>
+            <label>Select State:</label>
+        </div>
+        <button (click)="search()">Search</button>
+    </form>
+</div>
+

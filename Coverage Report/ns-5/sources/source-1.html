@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CountryFactory</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.jumia.demo.factories</a>
+</div>
+
+<h1>Coverage Summary for Class: CountryFactory (com.jumia.demo.factories)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CountryFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (10/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.jumia.demo.factories;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.jumia.demo.entities.Country;
+<i class="no-highlight">4</i>&nbsp;import com.jumia.demo.exceptions.BusinessException;
+<i class="no-highlight">5</i>&nbsp;import com.jumia.demo.interfaces.ICountry;
+<i class="no-highlight">6</i>&nbsp;import com.jumia.demo.models.countries.*;
+<i class="no-highlight">7</i>&nbsp;
+<b class="nc"><i class="no-highlight">8</i>&nbsp;public class CountryFactory {</b>
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;    static final String cameroonCode = &quot;(237)&quot;;
+<i class="no-highlight">11</i>&nbsp;    static final String ethiopiaCode = &quot;(251)&quot;;
+<i class="no-highlight">12</i>&nbsp;    static final String moroccoCode = &quot;(212)&quot;;
+<i class="no-highlight">13</i>&nbsp;    static final String mozambiqueCode = &quot;(258)&quot;;
+<i class="no-highlight">14</i>&nbsp;    static final String ugandaCode = &quot;(256)&quot;;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    public static ICountry createCountry(Country country) {
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        if(country.getPhone().startsWith(cameroonCode))</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;            return new Cameroon(country.getId(), country.getName());</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        else if(country.getPhone().startsWith(ethiopiaCode))</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;            return new Ethiopia(country.getId(), country.getName());</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        else if(country.getPhone().startsWith(moroccoCode))</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;            return new Morocco(country.getId(), country.getName());</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        else if(country.getPhone().startsWith(mozambiqueCode))</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            return new Mozambique(country.getId(), country.getName());</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        else if(country.getPhone().startsWith(ugandaCode))</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            return new Uganda(country.getId(), country.getName());</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        throw new BusinessException(&quot;Invalid country code&quot;);</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-20 16:39</div>
+</div>
+</body>
+</html>
