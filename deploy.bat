@@ -1,6 +1,9 @@
-cd angular\NumbersCategorization
+SET JAVA_HOME=C:\Program Files\Java\jdk1.8.0_241
+cd .\angular\NumbersCategorization
+CALL npm install -g @angular/cli
+CALL npm i
 CALL ng build --prod
 cd ..\..\demo
-CALL mvn clean install
+CALL "C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.3\plugins\maven\lib\maven3\bin\mvn" clean install
 cd ..\Deployment\Jumia\demo
 CALL docker-compose up -d
