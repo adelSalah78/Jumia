@@ -1,0 +1,30 @@
+version: '2.1'
+
+networks:
+  Jumia_Network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 173.50.0.0/16
+
+services:
+  backend:
+    build: ./backend/
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./backend/sample.db:/sample.db
+    networks:
+      Jumia_Network:
+        ipv4_address: 173.50.0.2
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./frontend/dist/numbers-categorization:/usr/share/nginx/html
+      - ./frontend/nginx_config:/etc/nginx/conf.d/
+    ports:
+      - "4200:4200"
+    networks:
+      Jumia_Network:
+        ipv4_address: 173.50.0.3

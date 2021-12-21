@@ -17,6 +17,11 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
+
+		<deployment.folder>Deployment/Jumia</deployment.folder>
+		<build.path.directory>${user.dir}/../${deployment.folder}</build.path.directory>
+		<packaging.outputDirectory>${build.path.directory}/${project.artifactId}
+		</packaging.outputDirectory>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +73,95 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>${packaging.outputDirectory}/backend</outputDirectory>
+					<finalName>${project.artifactId}-service</finalName>
+				</configuration>
+			</plugin>
+
+			<plugin>
+			<groupId>com.coderplus.maven.plugins</groupId>
+			<artifactId>copy-rename-maven-plugin</artifactId>
+			<version>1.0</version>
+			<executions>
+			<execution>
+			<id>copy-configurations-and-settings</id>
+			<phase>prepare-package</phase>
+			<goals>
+				<goal>copy</goal>
+			</goals>
+			<configuration>
+			<fileSets>
+			<fileSet>
+				<sourceFile>./docker-compose.yaml
+				</sourceFile>
+				<destinationFile>${packaging.outputDirectory}/docker-compose.yaml
+				</destinationFile>
+			</fileSet>
+				<fileSet>
+					<sourceFile>./backend/Dockerfile
+					</sourceFile>
+					<destinationFile>${packaging.outputDirectory}/backend/Dockerfile
+					</destinationFile>
+				</fileSet>
+				<fileSet>
+					<sourceFile>./frontend/Dockerfile
+					</sourceFile>
+					<destinationFile>${packaging.outputDirectory}/frontend/Dockerfile
+					</destinationFile>
+				</fileSet>
+				<fileSet>
+					<sourceFile>./frontend/nginx.conf
+					</sourceFile>
+					<destinationFile>${packaging.outputDirectory}/frontend/nginx_config/nginx.conf
+					</destinationFile>
+				</fileSet>
+					<fileSet>
+						<sourceFile>./sample.db
+						</sourceFile>
+						<destinationFile>${packaging.outputDirectory}/backend/sample.db
+						</destinationFile>
+					</fileSet>
+			</fileSets>
+			</configuration>
+			</execution>
+			</executions>
+			</plugin>
+
+			<plugin>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.6</version>
+			<executions>
+			<execution>
+				<id>copy-resources-1</id>
+				<phase>validate</phase>
+				<goals>
+					<goal>copy-resources</goal>
+				</goals>
+				<configuration>
+					<outputDirectory>${packaging.outputDirectory}/frontend/dist</outputDirectory>
+					<resources>
+						<resource>
+							<directory>../angular/NumbersCategorization/dist</directory>
+							<filtering>true</filtering>
+						</resource>
+					</resources>
+				</configuration>
+			</execution>
+			</executions>
 			</plugin>
 		</plugins>
 	</build>

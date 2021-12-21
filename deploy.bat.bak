@@ -1,0 +1,6 @@
+cd angular\NumbersCategorization
+CALL ng build --prod
+cd ..\..\demo
+CALL "C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.3\plugins\maven\lib\maven3\bin\mvn" clean install
+cd ..\Deployment\Jumia\demo
+CALL docker-compose up -d
