@@ -24,3 +24,5 @@ The deploy.bat tasks:-
 
 
 Access the app via http://localhost:4200
+
+deploy.bat must be run on windows OS only

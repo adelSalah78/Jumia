@@ -20,3 +20,7 @@ The deploy.bat tasks:-
 7- navigate to a folder called "Deployment\Jumia\demo" where the docker-compose file resides.
 8- in this folder, maven command which has run previuosly in step 4 has formed the heirarchy of this folder to make the docker compose able to build the images from Dockerfile
 9- finally, run docker-compose up -d to deploy everything
+
+
+
+Access the app via http://localhost:4200
