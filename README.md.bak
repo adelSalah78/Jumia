@@ -13,8 +13,3 @@ Some pre-requsite before executing deploy.bat
 The deploy.bat tasks:-
 1- navigating to the angular source code where package.json resides (angular source code home)
 2- run "ng build --prod" to build the angular app 
-3- navigate to the backend source code where pom.xml resides.
-4- run mvn clean install
-5- navigate to a folder called "Deployment\Jumia\demo" where the docker-compose file resides.
-6- in this folder, maven command which has run previuosly in step 4 has formed the heirarchy of this folder to make the docker compose able to build the images from Dockerfile
-7- finally, run docker-compose up -d to deploy everything
